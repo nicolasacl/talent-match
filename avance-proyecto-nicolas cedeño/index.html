@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentoMatch | Plataforma Enterprise de Reclutamiento y Emparejamiento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Barra de Navegación / Header Principal -->
+        <header class="main-header">
+            <div class="logo-container">
+                <i class="fa-solid fa-network-wired logo-icon"></i>
+                <span class="logo-text">Talento<strong>Match</strong></span>
+            </div>
+            
+            <!-- Personalizador de Colores de la Interfaz -->
+            <div class="theme-customizer">
+                <label for="colorPicker"><i class="fa-solid fa-palette"></i> Color Tema:</label>
+                <input type="color" id="colorPicker" value="#2563eb" title="Personaliza el color de acento">
+            </div>
+
+            <nav class="header-nav">
+                <span class="badge-version">Enterprise v2.5</span>
+            </nav>
+        </header>
+
+        <!-- Contenido Principal Estructurado en Grid -->
+        <main class="dashboard-grid">
+            
+            <!-- Panel Izquierdo: Formulario de Registro Avanzado -->
+            <section class="card form-card">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-user-plus"></i> Registro y Auditoría de Candidato</h2>
+                    <p>Ingrese los datos técnicos para procesar el emparejamiento con vacantes activas.</p>
+                </div>
+                
+                <form id="formRegistro" class="advanced-form">
+                    <div class="input-group">
+                        <label for="nombreCandidato"><i class="fa-solid fa-user"></i> Nombre Completo del Candidato:</label>
+                        <input type="text" id="nombreCandidato" placeholder="Ej. Carlos Mendoza" required autocomplete="off">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="selectCargo"><i class="fa-solid fa-briefcase"></i> Cargo Requerido / Aspirado (Nivel Avanzado):</label>
+                      <select id="selectCargo" required>
+    <option value="">-- Seleccione un Cargo --</option>
+    <option value="Jefe de Operaciones · Operaciones">Jefe de Operaciones · Operaciones</option>
+    <option value="Analista de Datos Senior · Tecnología">Analista de Datos Senior · Tecnología</option>
+    <option value="Business Partner de Personas · Recursos Humanos">Business Partner de Personas · Recursos Humanos</option>
+    <option value="Controller Financiero · Finanzas">Controller Financiero · Finanzas</option>
+</select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="habilidadesCandidato"><i class="fa-solid fa-code"></i> Stack Tecnológico / Habilidades (Separadas por comas):</label>
+                        <textarea id="habilidadesCandidato" rows="3" placeholder="Ej. Python, Docker, Kubernetes, React, AWS" required></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="experienciaAños"><i class="fa-solid fa-clock"></i> Años de Experiencia:</label>
+                        <input type="number" id="experienciaAños" min="0" max="30" placeholder="Ej. 5" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary-action">
+                        <i class="fa-solid fa-floppy-disk"></i> Registrar y Procesar Talento
+                    </button>
+                </form>
+            </section>
+
+            <!-- Panel Derecho: Visualizador, Estadísticas y Listado de Candidatos -->
+            <section class="card results-card">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-id-card-clip"></i> Base de Datos y Perfiles Registrados</h2>
+                    <p>Monitoreo en tiempo real del almacenamiento local y compatibilidad.</p>
+                </div>
+
+                <div class="stats-overview">
+                    <div class="stat-box">
+                        <span class="stat-number" id="totalCandidatosCount">0</span>
+                        <span class="stat-label">Candidatos Activos</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number" id="cargosDisponiblesCount">7</span>
+                        <span class="stat-label">Cargos Especializados</span>
+                    </div>
+                </div>
+
+                <div class="search-filter-box">
+                    <input type="text" id="buscadorInput" placeholder="Filtrar candidatos por habilidad o nombre..." onkeyup="filtrarCandidatosUI()">
+                </div>
+
+                <div id="listaCandidatosContainer" class="candidatos-grid-container">
+                    <div class="empty-state">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <p>No hay candidatos registrados en la sesión actual.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2026 TalentoMatch Enterprise Architecture. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
